@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     struct sockaddr_in server_addr, client_addr;
     socklen_t sin_len = sizeof(client_addr);
     int fd_server, fd_client;
-    /* Storing the contents sent by the browser (a request) */
+	
     char buf[2048];
     int fdimg;
     int on = 1;
@@ -73,14 +73,10 @@ int main(int argc, char *argv[]){
 
         if(!fork()){
 
-            /* Child process */
-
-            /* Close this as the client no longer needs it */
             close(fd_server);
             memset(buf, 0, 2048);
-            read(fd_client, buf, 2047); /* 2047 because of null char? */
-
-            /* Print the request on the console */
+            read(fd_client, buf, 2047); 
+		
             printf("%s\n", buf);
 
             if(!strncmp(buf, "GET /pic.jpeg", 13)){
@@ -101,7 +97,6 @@ int main(int argc, char *argv[]){
             exit(0);
         }
 
-        /* Parent process */
         close(fd_client);
     }   
 
