@@ -1,5 +1,4 @@
-# HW-1
-web_server
+#小型web_server
 
 IT'S HW#1
 
